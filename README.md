@@ -4,12 +4,12 @@ Exploring the proper way of fetching posts from a REST API and render them using
 
 
 ## The Concept
-Users have the possibility to switch the application's theme (light or dark). The layout is based on [Twitter's Bootstrap Jumbotron template](http://getbootstrap.com/docs/4.1/examples/jumbotron/#).
+- ...
 
 ## How it works
-- Two objects describing "light" and "dark" styling are saved in a "settings" file which exports a "ThemeContext" object initialized with one of the objects `const ThemeContext = React.createContext(themeStyle.dark)`. 
-- `ThemeContext` is "provided" to the entire application by wrapping the root component with a `ThemeContext Provider`, `<ThemeContext.Provider value={this.state.theme}>...</ThemeContext.Provider>` which is initialized it with a default theme value (saved in the state)
-- `ThemeContext` is "consumed" by all components of the application `(<ThemeContext.Consumer> ... </<ThemeContext.Consumer>)`
+- ...
+- ...
+- ...
 
 
 ### Developer
