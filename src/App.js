@@ -43,13 +43,7 @@ class App extends Component {
 
         <div style={{ display:'flex', padding:'10px', border:'1px solid purple' }}>
           <div>
-            <p>titleKey==<b style={style.highlight}>title</b> &amp; textKey==<b style={style.highlight}>content</b></p>
-            <List collection={this.state.posts} textKey='content' titleKey='title' />
-          </div>
-          
-          <div>
-            <p>titleKey==<b style={style.highlight}>id</b> &amp; textKey==<b style={style.highlight}>location</b></p>
-            <List collection={this.state.posts} textKey='location' titleKey='id' />
+            <List collection={this.state.posts} titleKey="title" imgKey="img" textKey="content" />
           </div>
         </div>
       </div>

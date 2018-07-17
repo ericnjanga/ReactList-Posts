@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
  * @param {*} titleKey // Name of the attribute to be displayed
  * @param {*} textKey // Name of the attribute to be displayed (optional)
  */
-const List = ({ collection, textKey, titleKey }) => {
+const List = ({ collection, textKey, titleKey, imgKey }) => {
 
   const style = {
     margin: '0',
@@ -21,6 +21,7 @@ const List = ({ collection, textKey, titleKey }) => {
           <Item key={item.id}
             title={item[titleKey]}
             text={item[textKey]}
+            img={item[imgKey]}
           />
         )
       }
@@ -34,7 +35,7 @@ const List = ({ collection, textKey, titleKey }) => {
  * @param {*} title
  * @param {*} text
  */
-const Item = ({ text, title }) => {
+const Item = ({ title, text, img }) => {
 
   const style = {
     listStyle: 'none',
@@ -46,6 +47,8 @@ const Item = ({ text, title }) => {
   return (
     <li style={style}>
       <h3>{title}</h3>
+      { console.log('---img=', img) }
+      { img && <img src={img} alt={title} /> }
       { text && <div>{text}</div> }
     </li>
   );
@@ -58,10 +61,12 @@ export default List;
 Item.propTypes = {
   title: PropTypes.string.isRequired, // specify the optional field
   text: PropTypes.string.isRequired, // the name of the attribute to be displayed
+  img: PropTypes.string, // the name of the attribute to be displayed
 };
 
 List.propTypes = {
   collection: PropTypes.array.isRequired,
   textKey: PropTypes.string.isRequired, // specify the optional field
   titleKey: PropTypes.string.isRequired, // the name of the attribute to be displayed
+  imgKey: PropTypes.string, // the name of the attribute to be displayed
 };
