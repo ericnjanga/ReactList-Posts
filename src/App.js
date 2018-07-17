@@ -31,11 +31,20 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Same list component reused:</h1>
         </header>
-       
 
-        <List collection={this.state.posts} textKey='content' titleKey='title' />
+        <div style={{ display:'flex', padding:'10px', border:'1px solid purple' }}>
+          <div>
+            <p>titleKey==<b>title</b> &amp; textKey==<b>content</b></p>
+            <List collection={this.state.posts} textKey='content' titleKey='title' />
+          </div>
+          
+          <div>
+            <p>titleKey==<b>id</b> &amp; textKey==<b>location</b></p>
+            <List collection={this.state.posts} textKey='location' titleKey='id' />
+          </div>
+        </div>
       </div>
     );
   }
