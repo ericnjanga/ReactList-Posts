@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Item from './Item.js';
 
 /**
  * The List receives the props, and iterates over the collection, mapping all the items into another component
@@ -7,15 +8,10 @@ import PropTypes from 'prop-types';
  * @param {*} titleKey // Name of the attribute to be displayed
  * @param {*} textKey // Name of the attribute to be displayed (optional)
  */
-const List = ({ collection, textKey, titleKey, imgKey }) => {
-
-  const style = {
-    margin: '0',
-    padding: '0',
-  };
+const List = ({ collection, textKey, titleKey, imgKey, style }) => {
 
   return (
-    <ul style={style}>
+    <ul style={style.container}>
       {
         collection && collection.map(item =>
           <Item key={item.id}
@@ -30,43 +26,30 @@ const List = ({ collection, textKey, titleKey, imgKey }) => {
 
 };
 
-/**
- * Component representing an item of the list
- * @param {*} title
- * @param {*} text
- */
-const Item = ({ title, text, img }) => {
-
-  const style = {
-    listStyle: 'none',
-    margin: '20px',
-    padding: '20px',
-    background: '#ccc',
-  };
-
-  return (
-    <li style={style}>
-      <h3>{title}</h3>
-      { console.log('---img=', img) }
-      { img && <img src={img} alt={title} /> }
-      { text && <div>{text}</div> }
-    </li>
-  );
-
-};
-
-export default List;
-
-
-Item.propTypes = {
-  title: PropTypes.string.isRequired, // specify the optional field
-  text: PropTypes.string.isRequired, // the name of the attribute to be displayed
-  img: PropTypes.string, // the name of the attribute to be displayed
-};
-
 List.propTypes = {
   collection: PropTypes.array.isRequired,
   textKey: PropTypes.string.isRequired, // specify the optional field
   titleKey: PropTypes.string.isRequired, // the name of the attribute to be displayed
   imgKey: PropTypes.string, // the name of the attribute to be displayed
+  style: PropTypes.shape({
+    container: PropTypes.shape({
+      margin: PropTypes.number,
+      padding: PropTypes.number,
+    }),
+  }),
 };
+
+List.defaultProps = {
+  imgKey: '', // the name of the attribute to be displayed
+  style: {
+    container: {
+      margin: '0 auto',
+      padding: '0',
+      display: 'flex',
+      flexDirection: 'column',
+      maxWidth: '410px',
+    },
+  },
+};
+
+export default List;

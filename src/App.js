@@ -41,11 +41,7 @@ class App extends Component {
           <h1 className="App-title">Same list component <span style={style.highlight}>reused</span>:</h1>
         </header>
 
-        <div style={{ display:'flex', padding:'10px', border:'1px solid purple' }}>
-          <div>
-            <List collection={this.state.posts} titleKey="title" imgKey="img" textKey="content" />
-          </div>
-        </div>
+        <List collection={this.state.posts} titleKey="title" imgKey="img" textKey="content" />
       </div>
     );
   }
