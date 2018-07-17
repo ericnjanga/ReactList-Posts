@@ -27,21 +27,28 @@ class App extends Component {
 
 
   render() {
+
+    const style = {
+      highlight: {
+        color: '#ff00a1',
+      },
+    };
+
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Same list component reused:</h1>
+          <h1 className="App-title">Same list component <span style={style.highlight}>reused</span>:</h1>
         </header>
 
         <div style={{ display:'flex', padding:'10px', border:'1px solid purple' }}>
           <div>
-            <p>titleKey==<b>title</b> &amp; textKey==<b>content</b></p>
+            <p>titleKey==<b style={style.highlight}>title</b> &amp; textKey==<b style={style.highlight}>content</b></p>
             <List collection={this.state.posts} textKey='content' titleKey='title' />
           </div>
           
           <div>
-            <p>titleKey==<b>id</b> &amp; textKey==<b>location</b></p>
+            <p>titleKey==<b style={style.highlight}>id</b> &amp; textKey==<b style={style.highlight}>location</b></p>
             <List collection={this.state.posts} textKey='location' titleKey='id' />
           </div>
         </div>
