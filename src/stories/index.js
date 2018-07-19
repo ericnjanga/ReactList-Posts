@@ -3,18 +3,42 @@ import { storiesOf } from '@storybook/react';
 import List from './../components/List.js';
 import { dummyPosts } from './../settings/dummy-data.js';
 
- 
-storiesOf('List', module)
-  .add('No text field and No image', () => (
-    <List collection={dummyPosts} titleKey="title" />
-  ))
 
+/**
+ * List
+ * ---------
+ */
 storiesOf('List', module)
-  .add('with text field and No image', () => (
-    <List collection={dummyPosts} titleKey="title" textKey="content" />
-  ))
+  .add('No text field and No image', () => {
 
-  storiesOf('List', module)
-    .add('with text field and image', () => (
-      <List collection={dummyPosts} titleKey="title" textKey="content" imgKey="img" />
-    ))
+    return (
+      <List
+        collection={dummyPosts}
+        titleKey="title"
+      />
+    );
+
+  })
+  .add('with text field and No image', () => {
+
+    return (
+      <List
+        collection={dummyPosts}
+        titleKey="title"
+        textKey="content"
+      />
+    );
+
+  })
+  .add('with text field and image', () => {
+
+    return (
+      <List
+        collection={dummyPosts}
+        titleKey="title"
+        textKey="content"
+        imgKey="img"
+      />
+    );
+
+  });
