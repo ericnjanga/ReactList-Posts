@@ -17,8 +17,14 @@ Figure.propTypes = {
   alt: PropTypes.string.isRequired,
   style: PropTypes.shape({
     figure: PropTypes.shape({
-      margin: PropTypes.number,
-      padding: PropTypes.number,
+      margin: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+      ]),
+      padding: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+      ]),
     }),
     img: PropTypes.shape({
       width: PropTypes.string,

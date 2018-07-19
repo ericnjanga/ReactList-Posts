@@ -12,7 +12,6 @@ const Item = ({ title, text, img, style }) => {
   return (
     <li style={style.container}>
       <h3 style={style.title}>{title}</h3>
-      { console.log('---img=', img) }
       { img && <Figure src={img} alt={title} /> }
       { text && <div style={style.text}>{text}</div> }
     </li>
@@ -22,36 +21,48 @@ const Item = ({ title, text, img, style }) => {
 
 Item.propTypes = {
   title: PropTypes.string.isRequired, // specify the optional field
-  text: PropTypes.string.isRequired, // the name of the attribute to be displayed
-  img: PropTypes.string, // the name of the attribute to be displayed
+  text: PropTypes.string, // (optional)
+  img: PropTypes.string, // (optional)
   style: PropTypes.shape({
-    figure: PropTypes.shape({
-      margin: PropTypes.number,
-      padding: PropTypes.number,
+    container: PropTypes.shape({
+      listStyle: PropTypes.string,
+      margin: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+      ]),
+      padding: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+      ]),
     }),
-    img: PropTypes.shape({
-      width: PropTypes.string,
+    title: PropTypes.shape({
+      margin: PropTypes.string,
     }),
   }),
 };
 
 Item.defaultProps = {
-  img: '', // the name of the attribute to be displayed
+  text: '',
+  img: '',
   style: { // Component will be styled by default if no "style" object is provided
     container: {
       listStyle: 'none',
       margin: '50px 0',
       background: '#fff',
-      boxShadow: '0px 0px 1px 0px rgba(135,135,135,1)',
+      borderRadius: '.25rem',
+      boxShadow: '0px 0px 1px 0px rgba(160,160,160,1)',
     },
     title: {
       margin: '0',
       padding: '20px',
       textAlign: 'left',
+      fontWeight: '300',
+      fontSize: '29px',
     },
     text: {
       padding: '20px',
       textAlign: 'left',
+      lineHeight: '25px',
     },
   },
 };

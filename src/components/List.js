@@ -28,19 +28,26 @@ const List = ({ collection, textKey, titleKey, imgKey, style }) => {
 
 List.propTypes = {
   collection: PropTypes.array.isRequired,
-  textKey: PropTypes.string.isRequired, // specify the optional field
   titleKey: PropTypes.string.isRequired, // the name of the attribute to be displayed
-  imgKey: PropTypes.string, // the name of the attribute to be displayed
+  textKey: PropTypes.string, // (optional)
+  imgKey: PropTypes.string, // (optional)
   style: PropTypes.shape({
     container: PropTypes.shape({
-      margin: PropTypes.number,
-      padding: PropTypes.number,
+      margin: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+      ]),
+      padding: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+      ]),
     }),
   }),
 };
 
 List.defaultProps = {
-  imgKey: '', // the name of the attribute to be displayed
+  textKey: '',
+  imgKey: '',
   style: {
     container: {
       margin: '0 auto',
